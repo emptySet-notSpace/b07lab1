@@ -135,7 +135,7 @@ public class Polynomial {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-    
+
         for (int i = 0; i < coefficients.length; i++) {
             double coefficient = coefficients[i];
             int exponent = exponents[i];
@@ -156,25 +156,15 @@ public class Polynomial {
                 coefficient = -coefficient;
             }
 
-            if (exponent == 0) {
-                sb.append(coefficient); 
-            } else if (exponent == 1) {
-                if (coefficient == 1) {
-                    sb.append("x"); 
-                } else {
-                    sb.append(coefficient).append("x");
-                }
-            } else {
-                if (coefficient == 1) {
-                    sb.append("x^").append(exponent);
-                } else {
-                    sb.append(coefficient).append("x^").append(exponent);
-                }
+            sb.append(coefficient);
+            if (exponent != 0) {
+                sb.append("x").append(exponent);
             }
         }
 
         return sb.toString();
     }
+
 
     public Polynomial multiply(Polynomial other) {
         Map<Integer, Double> resultMap = new HashMap<>();
